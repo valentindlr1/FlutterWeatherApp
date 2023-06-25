@@ -7,7 +7,7 @@ import 'package:flutter_weather/pages/choose_location.dart';
 void main() {
   runApp(MaterialApp(
     routes: {
-      '/': (context) => WeatherHome(),
+      '/': (context) => Loading(),
       '/home': (context) => WeatherHome(),
 
     },

@@ -10,10 +10,14 @@ class WeatherHome extends StatefulWidget {
 
 class _WeatherHomeState extends State<WeatherHome> {
 
-  int temperature = 1;
+  Map data = {};
 
   @override
   Widget build(BuildContext context) {
+
+    data = ModalRoute.of(context)!.settings.arguments as Map;
+    print(data);
+
     return Scaffold(
       backgroundColor: Colors.blue[50],
       appBar: AppBar(
@@ -25,10 +29,10 @@ class _WeatherHomeState extends State<WeatherHome> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           setState(() {
-            temperature += 1;
+
           });
         },
-        child: Icon(Icons.add),
+        child: Icon(Icons.location_on),
       ),
       body: Padding(
           padding: EdgeInsets.fromLTRB(30.0, 20.0, 30.0, 0.0),
@@ -41,8 +45,7 @@ class _WeatherHomeState extends State<WeatherHome> {
                       color: Colors.black87
                   ),
                 ),
-                const Text(
-                  'Santiago del Estero',
+                 Text(data['location'],
                   style: TextStyle(
                     color: Colors.black87,
                     fontSize: 24.0,
@@ -56,7 +59,7 @@ class _WeatherHomeState extends State<WeatherHome> {
                   ),
                 ),
                 Text(
-                  '$temperature °C',
+                  '${data['temperature']} °C',
                   style: const TextStyle(
                     color: Colors.black87,
                     fontSize: 24.0,
@@ -69,8 +72,8 @@ class _WeatherHomeState extends State<WeatherHome> {
                       color: Colors.black87
                   ),
                 ),
-                const Text(
-                  '5°C',
+                 Text(
+                  '${data['thermal']} °C',
                   style: TextStyle(
                     color: Colors.black87,
                     fontSize: 24.0,
@@ -80,7 +83,7 @@ class _WeatherHomeState extends State<WeatherHome> {
                 const Text(
                     'Sky'
                 ),
-                const Row(
+                 Row(
                   children: <Widget>[
                     Icon(
                       Icons.sunny,
@@ -88,7 +91,7 @@ class _WeatherHomeState extends State<WeatherHome> {
                     ),
                     SizedBox(width: 10.0,),
                     Text(
-                      'Clear',
+                      data['sky'],
                       style: TextStyle(
                           color: Colors.black87,
                           fontSize: 24.0
@@ -97,12 +100,7 @@ class _WeatherHomeState extends State<WeatherHome> {
                   ],
                 ),
                 SizedBox(height: 30.0,),
-                TextButton(
-                    onPressed: () {
-                      print('hello');
-                    },
-                    child: Text('Change Location')
-                )
+
               ]
           )
       ),

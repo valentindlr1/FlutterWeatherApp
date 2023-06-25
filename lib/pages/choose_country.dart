@@ -13,15 +13,18 @@ class _ChooseCountryState extends State<ChooseCountry> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: EdgeInsets.fromLTRB(20, 40, 20, 0),
-        child: Column(
-          children: <Widget>[
-            Text('Choose a Country')
-
-          ],
-        ),
+      appBar: AppBar(
+        backgroundColor: Colors.blue[200],
+        title: Text('Choose a Country'),
+        centerTitle: true,
+        elevation: 0.0,
       ),
+      body: ListView.builder(
+          itemCount: 10,
+          itemBuilder: (context, index) {
+
+          }
+      )
     );
   }
 }
