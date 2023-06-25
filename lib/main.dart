@@ -1,20 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_weather/pages/choose_country.dart';
+import 'package:flutter_weather/pages/home.dart';
+import 'package:flutter_weather/pages/loading.dart';
+import 'package:flutter_weather/pages/choose_location.dart';
 
 void main() {
   runApp(MaterialApp(
-    home: WeatherHome(),
+    routes: {
+      '/': (context) => WeatherHome(),
+      '/home': (context) => WeatherHome(),
+
+    },
   ));
 }
 
-class WeatherHome extends StatelessWidget {
-  const WeatherHome({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Weather'),
-      ),
-    );
-  }
-}
