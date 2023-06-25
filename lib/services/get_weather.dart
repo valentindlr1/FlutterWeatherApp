@@ -11,6 +11,7 @@ class GetWeather {
   String? country;
   String? localtime;
   String? sky;
+  String? icon;
 
   GetWeather({ this.locationurl });
 
@@ -26,6 +27,8 @@ class GetWeather {
       country = data['location']['country'];
       localtime = data['location']['localtime'];
       sky = data['current']['condition']['text'];
+      icon = data['current']['condition']['icon'];
+      print('ICONO: $icon');
     }
     catch(error){
       print('ERROR: $error');

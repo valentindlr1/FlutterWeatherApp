@@ -37,6 +37,7 @@ class _WeatherHomeState extends State<WeatherHome> {
               'country': result['country'],
               'localtime': result['localtime'],
               'sky': result['sky'],
+              'icon': result['icon'],
               'countries': result['countries']
             };
           });
@@ -94,9 +95,8 @@ class _WeatherHomeState extends State<WeatherHome> {
                 ),
                  Row(
                   children: <Widget>[
-                    Icon(
-                      Icons.sunny,
-                      color: Colors.amber,
+                    Image(
+                      image: NetworkImage('https:${data['icon']}'),
                     ),
                     SizedBox(width: 10.0,),
                     Text(

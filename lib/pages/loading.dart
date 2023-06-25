@@ -27,6 +27,7 @@ class _LoadingState extends State<Loading> {
       'country': instance.country,
       'localtime': instance.localtime,
       'sky': instance.sky,
+      'icon': instance.icon,
       'countries': allCountries.countries
     });
   }

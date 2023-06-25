@@ -41,6 +41,7 @@ class _ChooseCountryState extends State<ChooseCountry> {
                   'country': result['country'],
                   'localtime': result['localtime'],
                   'sky': result['sky'],
+                  'icon': result['icon'],
                   'countries': result['countries']
                 });
                 },

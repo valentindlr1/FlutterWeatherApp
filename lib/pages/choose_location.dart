@@ -40,6 +40,7 @@ class _ChooseLocationState extends State<ChooseLocation> {
                       'country': instance.country,
                       'localtime': instance.localtime,
                       'sky': instance.sky,
+                      'icon': instance.icon,
                       'countries': data['countries']
                     });
                   },
