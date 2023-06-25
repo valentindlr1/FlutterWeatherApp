@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_weather/services/get_cities.dart';
 
 class ChooseCountry extends StatefulWidget {
   const ChooseCountry({super.key});
@@ -6,12 +7,17 @@ class ChooseCountry extends StatefulWidget {
   @override
   State<ChooseCountry> createState() => _ChooseCountryState();
 }
-
-List countries = ['Argentina', 'Brazil'];
+Map data = {};
 
 class _ChooseCountryState extends State<ChooseCountry> {
+
+
+
   @override
   Widget build(BuildContext context) {
+
+    data = ModalRoute.of(context)!.settings.arguments as Map;
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blue[200],
@@ -20,9 +26,27 @@ class _ChooseCountryState extends State<ChooseCountry> {
         elevation: 0.0,
       ),
       body: ListView.builder(
-          itemCount: 10,
+          itemCount: 140,
           itemBuilder: (context, index) {
-
+          return Card(
+            child: ListTile(
+              onTap: () async {
+                GetCities instance = GetCities(country: data['countries'][index]['cca2']);
+                await instance.getCities();
+                dynamic result = await Navigator.pushNamed(context, '/cities', arguments: {'cities': instance.cities, 'countries': data['countries']});
+                Navigator.pop(context, {
+                  'temperature': result['temperature'],
+                  'thermal': result['thermal'],
+                  'location': result['location'],
+                  'country': result['country'],
+                  'localtime': result['localtime'],
+                  'sky': result['sky'],
+                  'countries': result['countries']
+                });
+                },
+              title: Text(data['countries'][index]['name']['common']),
+            ),
+          );
           }
       )
     );

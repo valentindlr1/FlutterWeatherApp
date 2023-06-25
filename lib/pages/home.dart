@@ -15,8 +15,7 @@ class _WeatherHomeState extends State<WeatherHome> {
   @override
   Widget build(BuildContext context) {
 
-    data = ModalRoute.of(context)!.settings.arguments as Map;
-    print(data);
+    data = data.isNotEmpty ? data : ModalRoute.of(context)!.settings.arguments as Map;
 
     return Scaffold(
       backgroundColor: Colors.blue[50],
@@ -27,9 +26,19 @@ class _WeatherHomeState extends State<WeatherHome> {
         elevation: 0.0,
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          setState(() {
+        onPressed: () async {
 
+          dynamic result = await Navigator.pushNamed(context, '/countries', arguments: {'countries': data['countries']});
+          setState(() {
+            data = {
+              'temperature': result['temperature'],
+              'thermal': result['thermal'],
+              'location': result['location'],
+              'country': result['country'],
+              'localtime': result['localtime'],
+              'sky': result['sky'],
+              'countries': result['countries']
+            };
           });
         },
         child: Icon(Icons.location_on),

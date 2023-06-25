@@ -9,6 +9,8 @@ void main() {
     routes: {
       '/': (context) => Loading(),
       '/home': (context) => WeatherHome(),
+      '/countries': (context) => ChooseCountry(),
+      '/cities': (context) => ChooseLocation()
 
     },
   ));
